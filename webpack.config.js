@@ -1,6 +1,7 @@
 /* webpack.config.js ： Webpack 的設定檔 */
  
-var path = require('path');
+var path    = require('path');
+var webpack = require('webpack');
  
 module.exports = {
     mode: 'development',
@@ -19,5 +20,10 @@ module.exports = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new webpack.optimize.UglifyJsPlugin(function(){
+            // 這裡應該可以設定一些東西，但不是本篇想討論的，有興趣可以 Google 這個 plugin 可以做啥...
+        }),
+    ]
 }
