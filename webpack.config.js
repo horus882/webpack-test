@@ -3,7 +3,7 @@
 var path    = require('path');
 var webpack = require('webpack');
 
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // Webpack 4 [webpack --mode production] 已會自動壓縮了，不太需要這邊僅作練習
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin'); // Webpack 4 [webpack --mode production] 已會自動壓縮了，不太需要這邊僅作練習
 const MiniCssExtractPlugin = require('mini-css-extract-plugin'); // Webpack 4 改用這個
 
 /* Webpack 4 不支援
@@ -16,7 +16,7 @@ var extractPlugin = new ExtractTextPlugin({ // 建立一個 extract text plugin 
 */
  
 module.exports = {
-    mode: 'development', // development, production
+    mode: 'production', // development, production
     entry: './src/js/main.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -43,19 +43,19 @@ module.exports = {
         ]
     },
     optimization: {
-        minimizer: [
-            // we specify a custom UglifyJsPlugin here to get source maps in production
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                uglifyOptions: {
-                    compress: false,
-                    ecma: 6,
-                    mangle: true
-                },
-                sourceMap: true
-            })
-        ]
+        // minimizer: [
+        //     // we specify a custom UglifyJsPlugin here to get source maps in production
+        //     new UglifyJsPlugin({
+        //         cache: true,
+        //         parallel: true,
+        //         uglifyOptions: {
+        //             compress: false,
+        //             ecma: 6,
+        //             mangle: true
+        //         },
+        //         sourceMap: true
+        //     })
+        // ]
     },
     plugins: [
         // new webpack.optimize.UglifyJsPlugin(function(){
